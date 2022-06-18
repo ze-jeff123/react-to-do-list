@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import Navbar from './components/Navbar';
+import Sidebar from './components/Sidebar';
+import TodoList from './components/TodoList';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isSidebarOpen: true,
+      todos: [],
+      projects: [
+          {
+            projectName: "Chores"
+          },
+          {
+            projectName: "Work stuff"
+          }
+        ],
+      curentProject: null,
+    }
+  }
+
+  allProjects = {
+    projectName : "All Projects"
+  }
+
+  changeProjectTo = (newProject) => {
+    this.setState({
+      curentProject : newProject
+    });
+  }
+
+  render() {
+    return (
+      <div className='screen-container'>
+        <Navbar />
+        <Sidebar changeProjectTo={this.changeProjectTo} isOpen={this.state.isSidebarOpen} projects={this.state.projects} allProjects={this.allProjects} curentProject={this.state.curentProject} />
+        <TodoList todos={this.state.todos} />
+      </div>
+    );
+  }
 }
 
 export default App;

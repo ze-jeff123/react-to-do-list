@@ -1,38 +1,237 @@
-.App {
-  text-align: center;
+* {
+    font-family : 'Roboto';
+    box-sizing : border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navbar {
+    height : 50px;
+    padding-left : 40px;
+    padding-right : 40px;
+    background-color : #F87666;
+    display : flex;
+    align-items : center;
+    gap : 10px;
+    grid-column : 1/3;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+    margin : 0px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.hamburgerButton,
+.houseButton {
+    background-color : rgba(0,0,0,0);
+    border : none;
+    background-size : contain;
+    background-repeat : no-repeat;
+    outline : none;
+    width : 30px;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
+    height : 30px;
+    flex : none;
+    /* cursor : pointer; */
 }
 
-.App-link {
-  color: #61dafb;
+.hamburgerButton {
+    background-image : url("../public/icons/hamburger-menu.svg");
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.houseButton {
+    background-image : url("../public/icons/home.svg");
+    height : 27px;
+}
+
+.searchbar:not(:focus) {
+}
+
+.searchbar {
+    outline : none;
+    border : none;
+    padding : 5px;
+    padding-left : 32px;
+    background-image : url("../public/icons/search.svg");
+    background-repeat : no-repeat;
+    background-size : 23px;
+    background-position-x : 5px;
+    background-position-y : center;
+    max-width : 400px;
+    transition : 0.2s;
+    flex : 1 1 100%;
+}
+
+.searchbar:not(:hover):not(:focus) {
+    background-color : #F9988B;
+    background-image : url("../public/icons/search-white.svg");
+}
+
+.searchbar:not(:hover):not(:focus)::placeholder{
+    color : white;
+}
+
+.searchbar:not(:focus) {
+    max-width : 200px;
+}
+
+.navbar form {
+    display : flex;
+    flex : 1;
+}
+.closeButton {
+    outline : none;
+    border : none;
+    width : 30px;
+    background-color : rgba(0,0,0,0);
+    background-image : url("../public/icons/close.svg");
+    background-size : contain;
+    /* cursor : pointer; */
+    margin-left : -30px;
+    background-size : 23px;
+    background-position : center;
+    background-repeat : no-repeat;
+}
+
+.screen-container {
+    display : grid;
+    grid-template-columns : 1fr 4fr;
+    grid-template-rows : max-content auto;
+    height : 100vh;
+}
+.sidebar {
+    background-color: green;
+    width : 200px;
+    background-color : #EDECE8;
+    display : flex;
+    flex-direction : column;
+    align-items : center;
+    padding : 20px;
+}
+
+.add-todo {
+    outline : none;
+    border : none;
+    font-size : 20px;
+    color : white;
+    background-color: #0DD6F2;
+    padding : 10px 20px;
+    text-align : center;
+    border-radius : 9999px;
+    /* cursor : pointer; */
+    margin-bottom : 30px;
+    width : 100%;
+}
+
+.all-projects,
+.projects,
+.project-name {
+    font-size : 18px;
+    width : 100%;
+    outline : none;
+    border : none;
+    background-color: #EDECE8;
+    padding : 5px 10px;
+    text-align:left;
+}
+
+.all-projects {
+    /* cursor : pointer; */
+}
+
+
+.all-projects:hover,
+.project-name:hover {
+    background-color : #D9D9D9;
+}
+
+.projects {
+    display : flex;
+    gap : 5px;
+    align-items : center;
+}
+
+.drop-down {
+    margin-left : auto;
+}
+
+.drop-down,
+.add {
+    outline : none;
+    border : none;
+    background-color : rgba(0,0,0,0);
+    background-position : center;
+    background-size : contain;
+    background-repeat : no-repeat;
+    height : 20px;
+    width : 20px;
+    border-radius : 50%;
+    transition : 0.2s;
+    padding : 12px;
+}
+
+.drop-down:hover,
+.add:hover {
+    background-color : #D9D9D9;
+}
+
+.drop-down {
+    background-image : url("../public/icons/arrow-down.svg");
+}
+
+.add {
+    background-image:url("../public/icons/add.svg");
+}
+
+.span-container {
+    width : 40px;
+    height : 20px;
+}
+
+.project-name {
+    font-size : 14px;
+    text-align : left;
+    padding-left : 30px;
+    /* cursor : pointer; */
+}
+
+.selected-project {
+    background-color : #D9D9D9;
+}
+
+.drop-down.down {
+    transform: rotate(-180deg);
+}
+
+.projects-list {
+    overflow : hidden;
+    transition : 0.2s;
+    align-self : stretch;
+}
+
+.closed {
+    transform : scaleY(0);
+    transform-origin : top;
+}
+
+.exit-button {
+    background-image : url("../public/icons/pencil.svg");
+    background-size : 15px;
+    background-position : center;
+    background-repeat : no-repeat;
+    border : none;
+    outline : none;
+    background-color : rgba(0,0,0,0);
+    margin-right : 12px;
+    margin-left : -999px;
+    border-radius : 50%;
+    width : 20px;
+    height : 20px;
+}
+
+.exit-button:hover {
+    background-color : #a2a2a2;
+}
+
+.modal-div {
+    width : 100px;
+    height : 100px;
+    background-color : green;
 }
