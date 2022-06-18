@@ -6,6 +6,7 @@ import TodoList from './components/TodoList';
 
 import Modal from "./components/Modal";
 import ModalContext from "./components/ModalContext";
+import EditProject from "./components/EditProject";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +25,7 @@ class App extends Component {
       curentProject: null,
       modalInfo: {
         isModalShowing: true,
-        modalElement: (<div className='modal-test'></div>),
+        modalElement: (<EditProject/>),
       }
     }
   }

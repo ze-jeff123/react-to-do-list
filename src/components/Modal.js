@@ -15,7 +15,6 @@ class Modal extends Component {
     }
 
     render() {
-        console.log(this.props.modalInfo.isModalShowing);
         return (
 
             //this.props.modalInfo.isModalShowing &&
