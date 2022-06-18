@@ -4,6 +4,8 @@ import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import TodoList from './components/TodoList';
 
+import Modal from "./components/Modal";
+import ModalContext from "./components/ModalContext";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -12,34 +14,60 @@ class App extends Component {
       isSidebarOpen: true,
       todos: [],
       projects: [
-          {
-            projectName: "Chores"
-          },
-          {
-            projectName: "Work stuff"
-          }
-        ],
+        {
+          projectName: "Chores"
+        },
+        {
+          projectName: "Work stuff"
+        }
+      ],
       curentProject: null,
+      modalInfo: {
+        isModalShowing: true,
+        modalElement: (<div className='modal-test'></div>),
+      }
     }
   }
 
   allProjects = {
-    projectName : "All Projects"
+    projectName: "All Projects"
   }
 
   changeProjectTo = (newProject) => {
     this.setState({
-      curentProject : newProject
+      curentProject: newProject
     });
+  }
+
+
+  showModal = (element) => {
+    this.setState({
+      modalInfo: {
+        isModalShowing: true,
+        modalElement: element,
+      }
+    })
+  }
+
+  closeModal = (element) => {
+    this.setState({
+      modalInfo: {
+        isModalShowing: false,
+        modalElement: null,
+      }
+    })
   }
 
   render() {
     return (
-      <div className='screen-container'>
-        <Navbar />
-        <Sidebar changeProjectTo={this.changeProjectTo} isOpen={this.state.isSidebarOpen} projects={this.state.projects} allProjects={this.allProjects} curentProject={this.state.curentProject} />
-        <TodoList todos={this.state.todos} />
-      </div>
+      <ModalContext.Provider value={{showModal : this.showModal , closeModal:this.closeModal}}>
+        <div className='screen-container'>
+          <Navbar />
+          <Sidebar changeProjectTo={this.changeProjectTo} isOpen={this.state.isSidebarOpen} projects={this.state.projects} allProjects={this.allProjects} curentProject={this.state.curentProject} />
+          <TodoList todos={this.state.todos} />
+        </div>
+        <Modal modalInfo={this.state.modalInfo} />
+      </ModalContext.Provider>
     );
   }
 }
