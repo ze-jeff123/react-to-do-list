@@ -116,6 +116,18 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    transition : 0.2s;
+    overflow : hidden;
+}
+
+.sidebar-closed {
+    width : 3rem;
+}
+
+.sidebar-closed .add-todo {
+    width : 1.2rem;
+    height : 0.6rem;
+    padding : 12px;
 }
 
 .add-todo {
@@ -125,7 +137,9 @@ body {
     color: white;
     background-color: #33A7FF;
     padding: 10px 20px;
-    text-align: center;
+    display : flex;
+    justify-content : center;
+    align-items : center;
     border-radius: 9999px;
     /* cursor : pointer; */
     margin-bottom: 30px;

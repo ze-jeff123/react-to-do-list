@@ -9,25 +9,28 @@ class Sidebar extends Component {
     super(props);
 
     this.state = {
-      isDropdownClosed : false,
+      isDropdownClosed: false,
     }
   }
 
   toggleDropdown = () => {
     this.setState((prevState) => ({
-      isDropdownClosed : (!prevState.isDropdownClosed), 
+      isDropdownClosed: (!prevState.isDropdownClosed),
     }))
   }
 
   addProject = () => {
     this.context.showModal(<AddProject />);
-    
+
   }
 
   render() {
     return (
-      <div className='sidebar'>
-        <button className='add-todo'>+ Create a Task</button>
+      <div className={'sidebar' + ((!this.props.isOpen) ? ' sidebar-closed' : '')}>
+        <button className='add-todo'>{this.props.isOpen ? '+ Create a Task' : '+'}</button>
+        {
+          this.props.isOpen&&
+          <>
         <SelectableProject allProjects={this.props.allProjects} changeProjectTo={this.props.changeProjectTo} className='all-projects' project={this.props.allProjects} curentProject={this.props.curentProject} />
         <div className='projects'>
           <div>
@@ -38,6 +41,8 @@ class Sidebar extends Component {
         </div>
 
         <ProjectsList allProjects={this.props.allProjects} isDropdownClosed={this.state.isDropdownClosed} projects={this.props.projects} changeProjectTo={this.props.changeProjectTo} curentProject={this.props.curentProject} />
+          </>
+      }
       </div>
     )
   }

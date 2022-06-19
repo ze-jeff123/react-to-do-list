@@ -12,7 +12,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      isSidebarOpen: true,
+      isSidebarOpen : true,
       todos: [],
       projects: [
         {
@@ -34,6 +34,12 @@ class App extends Component {
 
   allProjects = {
     projectName: "All Projects"
+  }
+
+  toggleSidebar = () => {
+    this.setState((prevState) => ({
+      isSidebarOpen : !prevState.isSidebarOpen
+    }));
   }
 
   editProjectName = (projectId, newName) => {
@@ -93,7 +99,7 @@ class App extends Component {
     return (
       <Context.Provider value={{ showModal: this.showModal, closeModal: this.closeModal, editProjectName: this.editProjectName, deleteProject : this.deleteProject, addProject : this.addProject }}>
         <div className='screen-container'>
-          <Navbar />
+          <Navbar toggleSidebar={this.toggleSidebar}/>
           <Sidebar changeProjectTo={this.changeProjectTo} isOpen={this.state.isSidebarOpen} projects={this.state.projects} allProjects={this.allProjects} curentProject={this.state.curentProject} />
           <TodoList todos={this.state.todos} />
         </div>
