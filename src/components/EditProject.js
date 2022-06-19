@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Context from './Context';
-
+import ProjectActionModal from './ProjectActionModal';
+/*
 class EditProject extends Component {
 
     constructor(props) {
@@ -46,5 +47,29 @@ class EditProject extends Component {
 }
 
 EditProject.contextType = Context;
+*/
 
-export default EditProject
+class EditProject extends Component {
+    submitForm = (modalState,event) => {
+        event.preventDefault();
+        if (modalState.projectName.length > 0) {
+            this.context.editProjectName(this.props.project.id, modalState.projectName);
+            this.context.closeModal();
+        }
+    }
+
+    handleDelete = (modalState,event) => {
+        this.context.deleteProject(this.props.project.id);
+        this.context.closeModal();
+    }
+
+    render() {
+        return (
+            <ProjectActionModal labelText='List Name' cancelButtonText='Delete' submitButtonText='Save' onCancel={this.handleDelete} onSubmit={this.submitForm} initialProjectName={this.props.project.name}/>
+        )
+    }
+}
+
+EditProject.contextType = Context;
+
+export default EditProject;

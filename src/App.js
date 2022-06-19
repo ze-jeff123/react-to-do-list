@@ -47,7 +47,14 @@ class App extends Component {
 
     this.setState({
       projects: newProjects,
-    })
+    });
+  }
+
+  addProject = (project) => {
+    let newProjects = this.state.projects.concat(project);
+    this.setState({
+      projects: newProjects,
+    });
   }
 
   deleteProject = (projectId) => {
@@ -84,7 +91,7 @@ class App extends Component {
 
   render() {
     return (
-      <Context.Provider value={{ showModal: this.showModal, closeModal: this.closeModal, editProjectName: this.editProjectName, deleteProject : this.deleteProject }}>
+      <Context.Provider value={{ showModal: this.showModal, closeModal: this.closeModal, editProjectName: this.editProjectName, deleteProject : this.deleteProject, addProject : this.addProject }}>
         <div className='screen-container'>
           <Navbar />
           <Sidebar changeProjectTo={this.changeProjectTo} isOpen={this.state.isSidebarOpen} projects={this.state.projects} allProjects={this.allProjects} curentProject={this.state.curentProject} />

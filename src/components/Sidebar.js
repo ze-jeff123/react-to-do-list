@@ -1,7 +1,8 @@
-import { render } from '@testing-library/react'
 import React, { Component } from 'react'
 import ProjectsList from './ProjectsList'
 import SelectableProject from './SelectableProject'
+import Context from './Context'
+import AddProject from "./AddProject";
 
 class Sidebar extends Component {
   constructor(props) {
@@ -17,6 +18,12 @@ class Sidebar extends Component {
       isDropdownClosed : (!prevState.isDropdownClosed), 
     }))
   }
+
+  addProject = () => {
+    this.context.showModal(<AddProject />);
+    
+  }
+
   render() {
     return (
       <div className='sidebar'>
@@ -27,7 +34,7 @@ class Sidebar extends Component {
             Projects
           </div>
           <div className={'drop-down ' + (this.state.isDropdownClosed ? 'up' : 'down')} onClick={this.toggleDropdown}></div>
-          <button className='add'></button>
+          <button className='add' onClick={this.addProject}></button>
         </div>
 
         <ProjectsList allProjects={this.props.allProjects} isDropdownClosed={this.state.isDropdownClosed} projects={this.props.projects} changeProjectTo={this.props.changeProjectTo} curentProject={this.props.curentProject} />
@@ -35,5 +42,7 @@ class Sidebar extends Component {
     )
   }
 }
+
+Sidebar.contextType = Context;
 
 export default Sidebar
