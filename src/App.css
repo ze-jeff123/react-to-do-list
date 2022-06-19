@@ -22,20 +22,25 @@ body {
 .houseButton {
     background-color: rgba(0, 0, 0, 0);
     border: none;
-    background-size: contain;
+    background-size: 1.5rem;
     background-repeat: no-repeat;
     outline: none;
+    background-position : center;
     width: 30px;
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
     height: 30px;
     flex: none;
     /* cursor : pointer; */
+    border-radius : 3px;
+    padding : 0px;
 }
 
 .hamburgerButton {
     background-image: url("../public/icons/hamburger-menu.svg");
 }
 
+.hamburgerButton:hover,.houseButton:hover {
+    background-color :#F9988B; 
+}
 .houseButton {
     background-image: url("../public/icons/home.svg");
     height: 27px;
@@ -84,10 +89,16 @@ body {
     background-image: url("../public/icons/close.svg");
     background-size: contain;
     /* cursor : pointer; */
-    margin-left: -30px;
+    margin : 2px;
+    margin-left: -32px;
     background-size: 23px;
     background-position: center;
     background-repeat: no-repeat;
+    border-radius : 3px;
+}
+
+.closeButton:hover {
+    background-color :#e6e6e6;
 }
 
 .screen-container {
@@ -112,13 +123,17 @@ body {
     border: none;
     font-size: 20px;
     color: white;
-    background-color: #0DD6F2;
+    background-color: #33A7FF;
     padding: 10px 20px;
     text-align: center;
     border-radius: 9999px;
     /* cursor : pointer; */
     margin-bottom: 30px;
     width: 100%;
+}
+
+.add-todo:hover {
+    background-color : #4993cb; /*#0DD6F2*/
 }
 
 .all-projects,
