@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ModalContext from './ModalContext'
+import ModalContext from './Context'
 
 class Modal extends Component {
     constructor(props) {

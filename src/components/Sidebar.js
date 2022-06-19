@@ -20,7 +20,7 @@ class Sidebar extends Component {
   render() {
     return (
       <div className='sidebar'>
-        <button className='add-todo'>+ Add Todo</button>
+        <button className='add-todo'>+ Create a Task</button>
         <SelectableProject allProjects={this.props.allProjects} changeProjectTo={this.props.changeProjectTo} className='all-projects' project={this.props.allProjects} curentProject={this.props.curentProject} />
         <div className='projects'>
           <div>

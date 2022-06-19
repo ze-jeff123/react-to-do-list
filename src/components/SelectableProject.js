@@ -1,5 +1,5 @@
 import React from 'react'
-import ModalContext from './ModalContext';
+import Context from './Context';
 import EditProject from './EditProject';
 function SelectableProject(props) {
   let classes = props.className;
@@ -18,16 +18,16 @@ function SelectableProject(props) {
 
   return (
     <div style={{display : 'flex', justifyContent : 'space-between', alignSelf:'stretch', alignItems:'center'}}>
-      <button onClick={handleClick} className={classes}>{props.project.projectName}
+      <button onClick={handleClick} className={classes}>{props.project.name}
       </button>
       {
         props.project === props.curentProject &&
-        <ModalContext.Consumer> 
+        <Context.Consumer> 
         {
           ({showModal}) =>
-          (<button className='edit-button' onClick={() =>showModal(<EditProject/>)}></button>)
+          (<button className='edit-button' onClick={() =>showModal(<EditProject project={props.project}/>)}></button>)
         }
-        </ModalContext.Consumer>
+        </Context.Consumer>
       }
     </div>
   )

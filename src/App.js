@@ -5,7 +5,7 @@ import Sidebar from './components/Sidebar';
 import TodoList from './components/TodoList';
 
 import Modal from "./components/Modal";
-import ModalContext from "./components/ModalContext";
+import Context from "./components/Context";
 import EditProject from "./components/EditProject";
 class App extends Component {
   constructor(props) {
@@ -16,22 +16,45 @@ class App extends Component {
       todos: [],
       projects: [
         {
-          projectName: "Chores"
+          id: 0,
+          name: "Chores"
         },
         {
-          projectName: "Work stuff"
+          id: 1,
+          name: "Work stuff"
         }
       ],
       curentProject: null,
       modalInfo: {
-        isModalShowing: true,
-        modalElement: (<EditProject/>),
+        isModalShowing: false,
+        modalElement: null,
       }
     }
   }
 
   allProjects = {
     projectName: "All Projects"
+  }
+
+  editProjectName = (projectId, newName) => {
+    let newProjects = this.state.projects;
+    for (let i = 0; i < newProjects.length; i++) {
+      if (newProjects[i].id === projectId) {
+        newProjects[i].name = newName;
+        break;
+      }
+    }
+
+    this.setState({
+      projects: newProjects,
+    })
+  }
+
+  deleteProject = (projectId) => {
+    let newProjects = this.state.projects.filter((project) => (project.id !== projectId));
+    this.setState({
+      projects : newProjects,
+    })
   }
 
   changeProjectTo = (newProject) => {
@@ -61,14 +84,14 @@ class App extends Component {
 
   render() {
     return (
-      <ModalContext.Provider value={{showModal : this.showModal , closeModal:this.closeModal}}>
+      <Context.Provider value={{ showModal: this.showModal, closeModal: this.closeModal, editProjectName: this.editProjectName, deleteProject : this.deleteProject }}>
         <div className='screen-container'>
           <Navbar />
           <Sidebar changeProjectTo={this.changeProjectTo} isOpen={this.state.isSidebarOpen} projects={this.state.projects} allProjects={this.allProjects} curentProject={this.state.curentProject} />
           <TodoList todos={this.state.todos} />
         </div>
         <Modal modalInfo={this.state.modalInfo} />
-      </ModalContext.Provider>
+      </Context.Provider>
     );
   }
 }
