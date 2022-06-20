@@ -103,20 +103,18 @@ body {
 
 .screen-container {
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: min-content 1fr;
     grid-template-rows: max-content auto;
     height: 100vh;
 }
 
 .sidebar {
-    background-color: green;
     width: 250px;
     background-color: #EDECE8;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    transition : 0.2s;
     overflow : hidden;
 }
 
@@ -332,4 +330,47 @@ body {
     border: none;
     outline: none;
     background-color: white;
+}
+
+.content-wrapper {
+    background-image : url("../public/img/background.jpg");
+    background-size : cover;
+    background-repeat : no-repeat;
+    display : flex;
+    justify-content : center;
+    align-items: start;
+}
+
+.todo-list-container {
+    background-color : white;
+    padding : 20px;
+    border-radius : 10px;
+    font-size : 1rem;
+    width : 50%;
+    margin-top : 10%;
+    min-height : 70%;
+}
+
+.todo-container {
+    display : flex;
+    gap : 3px;
+    font-size : 1rem;
+    align-items : center;
+}
+
+.checker {
+    border-radius : 50%;
+    width : 1rem;
+    height : 1rem;
+    background-color: transparent;
+    transition : 0.2s;
+    outline : none;
+    border : 2px solid black;
+}
+
+.checker.checked {
+    background-color :#0088DB;
+}
+.due-date {
+    margin-left : auto;
 }

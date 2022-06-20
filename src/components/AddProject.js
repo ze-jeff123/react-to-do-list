@@ -6,6 +6,7 @@ import {v4 as uuidv4} from 'uuid';
 class AddProject extends Component {
     submitForm = (modalState,event) => {
         event.preventDefault();
+        this.props.openDropdownIfClosed();
         if (modalState.projectName.length > 0) {
             const newProject = {
                 id : uuidv4(),

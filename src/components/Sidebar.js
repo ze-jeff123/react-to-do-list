@@ -19,8 +19,15 @@ class Sidebar extends Component {
     }))
   }
 
+  openDropdownIfClosed = () => {
+    if (this.state.isDropdownClosed === true) {
+      this.setState({
+        isDropdownClosed : false,
+      })
+    }
+  }
   addProject = () => {
-    this.context.showModal(<AddProject />);
+    this.context.showModal(<AddProject openDropdownIfClosed={this.openDropdownIfClosed} />, () => {if(this.state.isDropdownClosed === true) {this.toggleDropdown()}});
 
   }
 

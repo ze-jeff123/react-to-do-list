@@ -3,6 +3,7 @@ import "./App.css";
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import TodoList from './components/TodoList';
+import {v4 as uuidv4} from 'uuid';
 
 import Modal from "./components/Modal";
 import Context from "./components/Context";
@@ -13,16 +14,14 @@ class App extends Component {
 
     this.state = {
       isSidebarOpen : true,
-      todos: [],
-      projects: [
+      todos: [
         {
-          id: 0,
-          name: "Chores"
-        },
-        {
-          id: 1,
-          name: "Work stuff"
+          id : uuidv4(),
+          name : 'do something',
+          dueDate : new Date(),
         }
+      ],
+      projects: [
       ],
       curentProject: null,
       modalInfo: {
@@ -95,9 +94,14 @@ class App extends Component {
     })
   }
 
+  deleteTodo = (todoId) => {
+    const newTodos = this.state.todos.filter((todo) => (todo.id !== todoId));
+    this.setState({todos : newTodos});
+  }
+
   render() {
     return (
-      <Context.Provider value={{ showModal: this.showModal, closeModal: this.closeModal, editProjectName: this.editProjectName, deleteProject : this.deleteProject, addProject : this.addProject }}>
+      <Context.Provider value={{ showModal: this.showModal, closeModal: this.closeModal, editProjectName: this.editProjectName, deleteProject : this.deleteProject, addProject : this.addProject, deleteTodo : this.deleteTodo }}>
         <div className='screen-container'>
           <Navbar toggleSidebar={this.toggleSidebar}/>
           <Sidebar changeProjectTo={this.changeProjectTo} isOpen={this.state.isSidebarOpen} projects={this.state.projects} allProjects={this.allProjects} curentProject={this.state.curentProject} />
