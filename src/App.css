@@ -3,6 +3,11 @@
     box-sizing: border-box;
 }
 
+:root {
+    --sidebar-color :#f7f7f6;
+    --dark-gray : #EDECE8;
+}
+
 .navbar {
     height: 50px;
     padding-left: 40px;
@@ -109,7 +114,7 @@ body {
 
 .sidebar {
     width: 250px;
-    background-color: #EDECE8;
+    background-color: var(--sidebar-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -154,7 +159,7 @@ body {
     width: 100%;
     outline: none;
     border: none;
-    background-color: #EDECE8;
+    background-color: var(--sidebar-color);
     padding: 5px 10px;
     text-align: left;
 }
@@ -277,7 +282,7 @@ body {
 .edit-project input {
     outline: none;
     border: none;
-    background-color: #EDECE8;
+    background-color: var(--dark-gray);
     caret-color: #0088DB;
     padding: 8px;
     font-size: 26px;
@@ -318,7 +323,7 @@ body {
 }
 
 .button-container button:hover {
-    background-color: #EDECE8;
+    background-color: var(--dark-gray);
 }
 
 .edit-project button {
@@ -381,7 +386,7 @@ body {
 .create-todo-form input {
     outline: none;
     border: none;
-    background-color: #EDECE8;
+    background-color: var(--dark-gray);
     caret-color: #0088DB;
     padding: 8px;
     font-size: 26px;
@@ -390,7 +395,7 @@ body {
 }
 
 .create-todo-form select {
-    background-color: #EDECE8;
+    background-color: var(--dark-gray);
     caret-color: #0088DB;
     padding: 8px;
     font-size: 20px;
@@ -414,7 +419,7 @@ body {
 }
 
 .create-todo-form .button-container button:hover {
-    background-color: #EDECE8;
+    background-color: var(--dark-gray);
 }
 
 .todo-form-input-wrapper {
