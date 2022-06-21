@@ -6,7 +6,7 @@ function TodoList(props) {
     <div className='content-wrapper'>
       <div className='todo-list-container'>
         {
-          props.todos.map((todo) => <Todo todo={todo} key={todo.id}/>)
+          props.todos.filter(todo => props.curentProject === props.allProjects || todo.projectId === props.curentProject.id).map((todo) => <Todo todo={todo} key={todo.id}/>)
         }
       </div>
     </div>

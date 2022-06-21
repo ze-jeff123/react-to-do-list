@@ -3,6 +3,7 @@ import ProjectsList from './ProjectsList'
 import SelectableProject from './SelectableProject'
 import Context from './Context'
 import AddProject from "./AddProject";
+import NewTodoModal from './NewTodoModal';
 
 class Sidebar extends Component {
   constructor(props) {
@@ -27,14 +28,18 @@ class Sidebar extends Component {
     }
   }
   addProject = () => {
-    this.context.showModal(<AddProject openDropdownIfClosed={this.openDropdownIfClosed} />, () => {if(this.state.isDropdownClosed === true) {this.toggleDropdown()}});
+    this.context.showModal( <AddProject openDropdownIfClosed={this.openDropdownIfClosed} /> );
 
+  }
+
+  handleCreateTodo = () => {
+   this.context.showModal( <NewTodoModal curentProject={this.props.curentProject} projects={this.props.projects} allProjects={this.props.allProjects} /> )
   }
 
   render() {
     return (
       <div className={'sidebar' + ((!this.props.isOpen) ? ' sidebar-closed' : '')}>
-        <button className='add-todo'>{this.props.isOpen ? '+ Create a Task' : '+'}</button>
+        <button onClick={this.handleCreateTodo} className='add-todo'>{this.props.isOpen ? '+ Create a Task' : '+'}</button>
         {
           this.props.isOpen&&
           <>

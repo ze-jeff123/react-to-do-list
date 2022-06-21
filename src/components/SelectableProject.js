@@ -11,7 +11,7 @@ function SelectableProject(props) {
 
   if (props.project === props.allProjects) {
     return (
-        <button onClick={handleClick} className={classes}>{props.project.projectName}
+        <button onClick={handleClick} className={classes}>{props.project.name}
         </button>
     )
   }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { endOfDay, add, format, isEqual } from 'date-fns';
-import { render } from '@testing-library/react';
 import Context from './Context';
 
 class Todo extends Component {

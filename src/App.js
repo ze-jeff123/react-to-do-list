@@ -4,9 +4,9 @@ import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import TodoList from './components/TodoList';
 import {v4 as uuidv4} from 'uuid';
-import NewTodoModal from "./components/NewTodoModal";
 import Modal from "./components/Modal";
 import Context from "./components/Context";
+import {compareAsc} from 'date-fns'
 class App extends Component {
   constructor(props) {
     super(props);
@@ -14,24 +14,28 @@ class App extends Component {
     this.state = {
       isSidebarOpen : true,
       todos: [
-        {
-          id : uuidv4(),
-          name : 'do something',
-          dueDate : new Date(),
-        }
       ],
       projects: [
+        {
+          name : 'Work',
+          id : uuidv4(),
+        },
+        {
+          name : 'House Tasks',
+          id : uuidv4(),
+        }
       ],
-      curentProject: null,
+      curentProject: this.allProjects,
       modalInfo: {
-        isModalShowing: true,
-        modalElement: <NewTodoModal/>,
+        isModalShowing: false,
+        modalElement: null,
       }
     }
   }
 
   allProjects = {
-    projectName: "All Projects"
+    name: "All Projects",
+    id : uuidv4(),
   }
 
   toggleSidebar = () => {
@@ -63,8 +67,10 @@ class App extends Component {
 
   deleteProject = (projectId) => {
     let newProjects = this.state.projects.filter((project) => (project.id !== projectId));
+    const newTodos = this.state.todos.filter(todo => todo.projectId != projectId);
     this.setState({
       projects : newProjects,
+      todos : newTodos,
     })
   }
 
@@ -98,13 +104,18 @@ class App extends Component {
     this.setState({todos : newTodos});
   }
 
+  addTodo = (newTodo) => {
+    const newTodos = this.state.todos.concat(newTodo).slice().sort((todo1, todo2) => (compareAsc(todo1.dueDate,todo2.dueDate)))
+    this.setState({todos : newTodos});
+  }
+
   render() {
     return (
-      <Context.Provider value={{ showModal: this.showModal, closeModal: this.closeModal, editProjectName: this.editProjectName, deleteProject : this.deleteProject, addProject : this.addProject, deleteTodo : this.deleteTodo }}>
+      <Context.Provider value={{ showModal: this.showModal, closeModal: this.closeModal, editProjectName: this.editProjectName, deleteProject : this.deleteProject, addProject : this.addProject, deleteTodo : this.deleteTodo, addTodo : this.addTodo }}>
         <div className='screen-container'>
           <Navbar toggleSidebar={this.toggleSidebar}/>
           <Sidebar changeProjectTo={this.changeProjectTo} isOpen={this.state.isSidebarOpen} projects={this.state.projects} allProjects={this.allProjects} curentProject={this.state.curentProject} />
-          <TodoList todos={this.state.todos} />
+          <TodoList todos={this.state.todos} curentProject={this.state.curentProject} allProjects={this.allProjects} />
         </div>
         <Modal modalInfo={this.state.modalInfo} />
       </Context.Provider>
