@@ -16,6 +16,14 @@ self.__precacheManifest = [
     "url": "/react-to-do-list/static/js/2.a48128e8.chunk.js"
   },
   {
+    "revision": "00b525ae3eb1dac6fa7050d0f600e1e2",
+    "url": "/react-to-do-list/static/media/home.00b525ae.svg"
+  },
+  {
+    "revision": "010a1a02f2f3e30b8ea369f67a1133bb",
+    "url": "/react-to-do-list/static/media/search.010a1a02.svg"
+  },
+  {
     "revision": "da60a222ae4877c150ea56294bb16170",
     "url": "/react-to-do-list/static/media/search-white.da60a222.svg"
   },
@@ -34,14 +42,6 @@ self.__precacheManifest = [
   {
     "revision": "2aed50e04dc33d3c2822c98842762193",
     "url": "/react-to-do-list/static/media/add.2aed50e0.svg"
-  },
-  {
-    "revision": "00b525ae3eb1dac6fa7050d0f600e1e2",
-    "url": "/react-to-do-list/static/media/home.00b525ae.svg"
-  },
-  {
-    "revision": "010a1a02f2f3e30b8ea369f67a1133bb",
-    "url": "/react-to-do-list/static/media/search.010a1a02.svg"
   },
   {
     "revision": "104dc2a38272dc9c5f8c2d41e7e22568",
