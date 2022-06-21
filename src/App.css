@@ -328,7 +328,7 @@ body {
 }
 
 .content-wrapper {
-    background-image : url("./img/background.jpg");
+    background-image : url("./img/background4.avif");
     background-size : cover;
     background-repeat : no-repeat;
     display : flex;
@@ -343,7 +343,8 @@ body {
     font-size : 1rem;
     width : 50%;
     margin-top : 10%;
-    min-height : 70%;
+    height : 70%;
+    overflow : scroll;
 }
 
 .todo-container {
