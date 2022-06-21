@@ -374,3 +374,54 @@ body {
 .due-date {
     margin-left : auto;
 }
+
+.create-todo-form {
+    background-color : white;
+    display : grid;
+    overflow : hidden;
+    border-radius : 10px;
+}
+
+.create-todo-form input {
+    outline: none;
+    border: none;
+    background-color: #EDECE8;
+    caret-color: #0088DB;
+    padding: 8px;
+    font-size: 26px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.create-todo-form select {
+    background-color: #EDECE8;
+    caret-color: #0088DB;
+    padding: 8px;
+    font-size: 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.create-todo-form label {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.create-todo-form .button-container button {
+    border : none;
+    outline : none;
+    background-color: white;
+}
+
+.create-todo-form input[type='date'] {
+    margin-bottom : 30px;
+}
+
+.create-todo-form .button-container button:hover {
+    background-color: #EDECE8;
+}
+
+.todo-form-input-wrapper {
+    display : grid;
+    padding : 15px;
+}

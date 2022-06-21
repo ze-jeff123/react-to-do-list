@@ -4,10 +4,9 @@ import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import TodoList from './components/TodoList';
 import {v4 as uuidv4} from 'uuid';
-
+import NewTodoModal from "./components/NewTodoModal";
 import Modal from "./components/Modal";
 import Context from "./components/Context";
-import EditProject from "./components/EditProject";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -25,8 +24,8 @@ class App extends Component {
       ],
       curentProject: null,
       modalInfo: {
-        isModalShowing: false,
-        modalElement: null,
+        isModalShowing: true,
+        modalElement: <NewTodoModal/>,
       }
     }
   }
