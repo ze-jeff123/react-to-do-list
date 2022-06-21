@@ -46,7 +46,6 @@ body {
     height: 27px;
 }
 
-.searchbar:not(:focus) {}
 
 .searchbar {
     outline: none;
@@ -158,10 +157,6 @@ body {
     background-color: #EDECE8;
     padding: 5px 10px;
     text-align: left;
-}
-
-.all-projects {
-    /* cursor : pointer; */
 }
 
 
